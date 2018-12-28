@@ -1,0 +1,6 @@
+framework module zp01yx_bwusbTM {
+  umbrella header "zp01yx_bwusbTM.h"
+
+  export *
+  module * { export * }
+}
