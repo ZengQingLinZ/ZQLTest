@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ZQLTest"
-  spec.version      = "0.0.12"
+  spec.version      = "0.0.13"
   spec.summary      = "A short description of ZQLTest."
 
   # This description is used to generate tags and improve search results.
@@ -64,6 +64,8 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
+   spec.swift_version = '4.1'
+ 
   # spec.platform     = :ios
    spec.platform     = :ios, "9.0"
 
@@ -94,9 +96,9 @@ Pod::Spec.new do |spec|
   #spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   #spec.exclude_files = "Classes/Exclude"
 
-    spec.source_files = "zp01yx_bwusbTM",'zp01yx_bwusbTM/Classes/zp01yx_bwusbTM.framework/Headers/*.{h,m}'
-    spec.resource  = 'zp01yx_bwusbTM/Classes/zp01yx_bwusb.bundle'
-    spec.vendored_frameworks = 'zp01yx_bwusbTM/Classes/zp01yx_bwusbTM.framework'
+    spec.source_files = "Classes",'Classes/*.{h,m,swift}'
+    spec.resource  = 'Classes/*.{xib}'
+    #spec.vendored_frameworks = 'zp01yx_bwusbTM/Classes/zp01yx_bwusbTM.framework'
 
   # spec.public_header_files = "Classes/**/*.h"
 
@@ -143,18 +145,6 @@ Pod::Spec.new do |spec|
     spec.xcconfig = {
     'VALID_ARCHS' => 'arm64 x86_64',
     }
-
-    spec.dependency "AFNetworking"
-    spec.dependency "MJRefresh"
     spec.dependency "SDWebImage"
-    spec.dependency "MJExtension"
-    spec.dependency "MBProgressHUD"
-    spec.dependency "Masonry"
-    spec.dependency "WMPageController", "~> 1.6.4"
-    spec.dependency "TTGTagCollectionView"
-    spec.dependency "FDFullscreenPopGesture"
-
-    spec.dependency "TMUserCenter"
-    spec.dependency "TMPaySDK"
 
 end
