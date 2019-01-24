@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ZQLTest"
-  spec.version      = "0.0.13"
+  spec.version      = "0.0.14"
   spec.summary      = "A short description of ZQLTest."
 
   # This description is used to generate tags and improve search results.
@@ -145,6 +145,6 @@ Pod::Spec.new do |spec|
     spec.xcconfig = {
     'VALID_ARCHS' => 'arm64 x86_64',
     }
-    spec.dependency "SDWebImage"
+    #spec.dependency "SDWebImage"
 
 end
