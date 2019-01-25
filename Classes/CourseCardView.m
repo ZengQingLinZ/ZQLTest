@@ -70,8 +70,8 @@
     CourseCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CourseCardCell" forIndexPath:indexPath];
     NSInteger index = indexPath.row;
     
-    cell.imgView.backgroundColor = [UIColor greenColor];
-    //[cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.models[index]]];
+    cell.imgView.backgroundColor = [UIColor lightGrayColor];
+    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.models[index]]];
     cell.nameLabel.text = @"";
     return cell;
 }
