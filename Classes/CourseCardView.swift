@@ -8,17 +8,19 @@
 
 import UIKit
 
-class CourseCardView: UIView {
+
+
+public class CourseCardView: UIView {
     
-    var selectedIndex = 0
-    var models: [String] = [String]() {
+  @objc public var selectedIndex = 0
+  @objc public var models: [String] = [String]() {
         didSet {
             if models.count < 2 {
                 collectionView.isScrollEnabled = false
             }
         }
     }
-    var selectedCourseClosure: ((String) -> Void)?
+   @objc public var selectedCourseClosure: ((String) -> Void)?
     
     lazy fileprivate var collectionView: UICollectionView = {
         let layout = CourseCardFlowLayout()
@@ -35,7 +37,7 @@ class CourseCardView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let path =  Bundle.main.path(forResource:"", ofType:"bundle")
+        let path =  Bundle.main.path(forResource:"zp01hxdl_vjflt", ofType:"bundle")
         let bun = Bundle(path: path!)
         
         collectionView.register(UINib(nibName: "CourseCardCell", bundle: bun), forCellWithReuseIdentifier: "CourseCardCell")
@@ -73,7 +75,7 @@ class CourseCardView: UIView {
 //        self.addSubview(closeBtn)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -82,7 +84,7 @@ class CourseCardView: UIView {
     }
     
     // 展示
-    public func show() {
+    @objc public func show() {
         
         //UIApplication.shared.keyWindow?.addSubview(self)
         self.scrollToItem(withAnimation: true, index: self.selectedIndex)
@@ -93,7 +95,7 @@ class CourseCardView: UIView {
     }
     
     // 移除
-    private func remove() {
+    @objc public func remove() {
         
         UIView.animate(withDuration: 0.5, animations: {
             self.y = self.height
@@ -107,11 +109,11 @@ class CourseCardView: UIView {
 extension CourseCardView: UICollectionViewDataSource, UICollectionViewDelegate, CAAnimationDelegate {
     
     // MARK:- CollectionView
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CourseCardCell", for: indexPath) as! CourseCardCell
         
@@ -122,7 +124,7 @@ extension CourseCardView: UICollectionViewDataSource, UICollectionViewDelegate, 
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let index = indexPath.row
         let pointInView = self.convert(collectionView.center, to: collectionView)
@@ -152,14 +154,14 @@ extension CourseCardView: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         let pointInView = self.convert(collectionView.center, to: collectionView)
         let index = collectionView.indexPathForItem(at: pointInView)?.row ?? 0
         print("滚动至下标：\(index)")
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let pointInView = self.convert(collectionView.center, to: collectionView)
         let index = collectionView.indexPathForItem(at: pointInView)?.row ?? 0
@@ -187,7 +189,7 @@ extension CourseCardView: UICollectionViewDataSource, UICollectionViewDelegate, 
         self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: animation)
     }
     
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         print("stop")
         remove()
     }
