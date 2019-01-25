@@ -10,7 +10,7 @@
 
 @implementation CourseCardFlowLayout
     
-    - (instancetype)init
+- (instancetype)init
     {
         self = [super init];
         if (self) {
@@ -63,8 +63,8 @@
     
     
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
-        // 滑动放大缩小  需要实时刷新layout
-        return YES;
+    // 滑动放大缩小  需要实时刷新layout
+    return YES;
 }
     
     

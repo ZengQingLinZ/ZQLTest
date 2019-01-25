@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ZQLTest"
-  spec.version      = "0.0.20"
+  spec.version      = "0.0.21"
   spec.summary      = "A short description of ZQLTest."
 
   # This description is used to generate tags and improve search results.
