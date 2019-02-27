@@ -23,10 +23,7 @@
     
 - (void)setModels:(NSArray *)models{
     _models = models;
-    if (models.count>0) {
-        [self scrollToItem:0];
-    }
-    
+    [self scrollToItem:0];
     if (models.count < 2) {
         self.collectionView.scrollEnabled = NO;
     }
@@ -48,20 +45,21 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(0, FIT_SCREEN_WIDTH(107) * 2, 0, FIT_SCREEN_WIDTH(107) * 2);    layout.minimumLineSpacing = -FIT_SCREEN_WIDTH(40);
     
-    layout.itemSize = CGSizeMake(FIT_SCREEN_WIDTH(107), FIT_SCREEN_HEIGHT(150));
+    layout.itemSize = CGSizeMake(FIT_SCREEN_WIDTH(107), FIT_SCREEN_HEIGHT(130));
     
     //    (width: FIT_SCREEN_WIDTH(107), height: FIT_SCREEN_HEIGHT(130))
     
     CGFloat xPadding = FIT_SCREEN_WIDTH(35);
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(xPadding, 20, SCREEN_WIDTH - xPadding * 2, FIT_SCREEN_HEIGHT(177)) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(xPadding, FIT_SCREEN_HEIGHT((self.height-157)/2), SCREEN_WIDTH - xPadding * 2, FIT_SCREEN_HEIGHT(157)) collectionViewLayout:layout];
     collectionView.backgroundColor = [UIColor clearColor];
     [collectionView setCollectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.delegate = self;
     collectionView.dataSource = self;
     
-    [collectionView registerNib:[UINib nibWithNibName:@"CourseCardCell" bundle:nil] forCellWithReuseIdentifier:@"CourseCardCell"];
+    NSBundle *currentBundle = [NSBundle bundleForClass:[self class]];
+    [collectionView registerNib:[UINib nibWithNibName:@"CourseCardCell" bundle:currentBundle] forCellWithReuseIdentifier:@"CourseCardCell"];
     return collectionView;
 }
     
@@ -73,7 +71,7 @@
     CourseCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CourseCardCell" forIndexPath:indexPath];
     NSInteger index = indexPath.row;
     
-    cell.imgView.backgroundColor = [UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1];
+    cell.imgView.backgroundColor = [UIColor lightGrayColor];
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.models[index]]];
     cell.nameLabel.text = @"";
     return cell;
