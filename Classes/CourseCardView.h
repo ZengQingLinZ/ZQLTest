@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^CollectionViewCellConfigureBlock)(id cell, id item);
 
 @interface CourseCardView : UIView
 @property (strong,nonatomic) UICollectionView *collectionView;
 @property (assign,nonatomic) NSInteger selectedIndex;
 @property (strong,nonatomic) NSArray *models;
+
+@property (nonatomic, copy) CollectionViewCellConfigureBlock configureCellBlock;
 @end

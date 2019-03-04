@@ -45,13 +45,13 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(0, FIT_SCREEN_WIDTH(107) * 2, 0, FIT_SCREEN_WIDTH(107) * 2);    layout.minimumLineSpacing = -FIT_SCREEN_WIDTH(40);
     
-    layout.itemSize = CGSizeMake(FIT_SCREEN_WIDTH(107), FIT_SCREEN_HEIGHT(130));
+    layout.itemSize = CGSizeMake(FIT_SCREEN_WIDTH(117), FIT_SCREEN_HEIGHT(140));
     
     //    (width: FIT_SCREEN_WIDTH(107), height: FIT_SCREEN_HEIGHT(130))
     
-    CGFloat xPadding = FIT_SCREEN_WIDTH(35);
+    CGFloat xPadding = FIT_SCREEN_WIDTH(15);
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(xPadding, FIT_SCREEN_HEIGHT((self.height-157)/2), SCREEN_WIDTH - xPadding * 2, FIT_SCREEN_HEIGHT(157)) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(xPadding, FIT_SCREEN_HEIGHT((self.height-180)/2), SCREEN_WIDTH - xPadding * 2, FIT_SCREEN_HEIGHT(180)) collectionViewLayout:layout];
     collectionView.backgroundColor = [UIColor clearColor];
     [collectionView setCollectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
@@ -69,6 +69,9 @@
     
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CourseCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CourseCardCell" forIndexPath:indexPath];
+    if (self.configureCellBlock) {
+        self.configureCellBlock(cell, indexPath);
+    }
     NSInteger index = indexPath.row;
     
     cell.imgView.backgroundColor = [UIColor lightGrayColor];
