@@ -72,11 +72,6 @@
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, indexPath);
     }
-    NSInteger index = indexPath.row;
-    
-    cell.imgView.backgroundColor = [UIColor lightGrayColor];
-    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.models[index]]];
-    cell.nameLabel.text = @"";
     return cell;
 }
     
