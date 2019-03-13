@@ -15,7 +15,7 @@
         self = [super init];
         if (self) {
             self.ActiveDistance = 400;
-            self.ScaleFactor = 0.25;
+            self.ScaleFactor = 0.7;
         }
         return self;
     }
@@ -56,7 +56,7 @@
         CGFloat zoom = 1 - self.ScaleFactor * normalizedDistance;
         attributes.transform3D = CATransform3DMakeScale(zoom, zoom, 1.0);
         
-        attributes.frame = CGRectMake(attributes.frame.origin.x, fabs(distance * self.ScaleFactor), attributes.frame.size.width, attributes.frame.size.height);
+       //attributes.frame = CGRectMake(attributes.frame.origin.x, fabs(distance * self.ScaleFactor), attributes.frame.size.width, attributes.frame.size.height);
     }
     return array;
 }
